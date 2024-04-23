@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Área Técnico</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #9b59b6;
+            color: white;
+            text-align: center;
+            padding: 1px 0;
+            font-size: 18px;
+            margin-bottom: 1px;
+        }
+
+         table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #9b59b6;
+            color: white;
+        }
+
+        .table-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .table-scrollable {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" style="text-decoration: none">
+        <button style="border-radius: 12px; background-color: #007bff; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer">Retorna ao menu</button>
+
+    </a>
+    <br><br>
+    <header><h2>Área Técnica - <span th:text="${nome}"></span></h2></header>
+    <br>
+    <!-- seção do filtro -->
+    <div class="filter-section">
+        <label for="status">Filtrar por status:</label>
+        <select id="status">
+            <option value="todos">Todos</option>
+            <option value="aberto">Abertos</option>
+            <option value="fechado">Fechados</option>
+        </select>
+    </div>
+
+
+    <div class="table-scrollable">
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Setor</th>
+                    <th>Data Abertura</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Prioridade</th>
+                    <th>Data Início</th>
+                    <th>Data Término</th>
+                    <th>Responsável</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <td>Usuário 1</td>
+                    <td>Setor 1</td>
+                    <td>01/01/2024</td>
+                    <td>Descrição do chamado1</td>
+                    <td>
+                        <select>
+                            <option>Aberto</option>
+                            <option selected>Fechado</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="radio" name="prioridade1" value="baixa" checked> Baixa
+                        <input type="radio" name="prioridade1" value="media"> Média
+                        <input type="radio" name="prioridade1" value="alta"> Alta
+                        <!--                        <input type="radio" name="prioridade" value="baixa" th:checked="${chamado.prioridade == 'baixa'}"> Baixa<br>
+                                                <input type="radio" name="prioridade" value="media" th:checked="${chamado.prioridade == 'media'}"> Média<br>
+                                                <input type="radio" name="prioridade" value="alta" th:checked="${chamado.prioridade == 'alta'}"> Alta-->
+                    </td>
+                    <td>03/01/2024</td>
+                    <td>05/01/2024</td>
+                    <td>
+                        <input type="checkbox" name="responsavel1" checked>
+                    </td>
+
+<!--                <tr th:each="chamado : ${chamados}">
+                    <td th:text="${chamado.usuario}"></td>
+                    <td th:text="${chamado.setor}"></td>
+                    <td th:text="${chamado.dataAbertura}"></td>
+                    <td th:text="${chamado.descricao}"></td>
+                    <td th:text="${chamado.dataInicio}"></td>
+                    <td th:text="${chamado.dataTermino}"></td>
+                    <td>
+                        <select>
+                            <option th:text="${chamado.status}"></option>-->
+                            <!-- Adicione outras opções conforme necessário -->
+                        <!--</select>-->
+                    <!--</td>
+
+
+                    <td>
+                                                <input type="radio" name="prioridade" value="baixa" th:checked="${chamado.prioridade == 'baixa'}"> Baixa<br>
+                                                <input type="radio" name="prioridade" value="media" th:checked="${chamado.prioridade == 'media'}"> Média<br>
+                                                <input type="radio" name="prioridade" value="alta" th:checked="${chamado.prioridade == 'alta'}"> Alta
+                    </td>
+                    <td>03/01/2024</td>
+                    <td>05/01/2024</td>-->
+                    </tr>
+
+
+                    <tr>
+                    <td>Usuário 2</td>
+                    <td>Setor 2</td>
+                    <td>01/02/2024</td>
+                    <td>Descrição do chamado2</td>
+                    <td>
+                        <select>
+                            <option>Aberto</option>
+                            <option selected>Fechado</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="radio" name="prioridade2" value="baixa"> Baixa
+                        <input type="radio" name="prioridade2" value="media" checked> Média
+                        <input type="radio" name="prioridade2" value="alta"> Alta
+                    </td>
+                    <td>03/02/2024</td>
+                    <td>05/02/2024</td>
+                    </td>
+
+                    <td>
+                        <input type="checkbox" name="responsavel2">
+                    </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <td>Usuário Teste Três</td>
+                        <td>Setor Três Teste</td>
+                        <td>01/03/2024</td>
+                        <td>Descrição do chamado Três BO Grande</td>
+                        <td>
+                            <select>
+                                <option selected>Aberto</option>
+                                <option >Fechado</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="radio" name="prioridade3" value="baixa"> Baixa
+                            <input type="radio" name="prioridade3" value="media"> Média
+                            <input type="radio" name="prioridade3" value="alta" checked> Alta
+                        </td>
+                        <td>03/04/2024</td>
+                        <td></td>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="responsavel3" >
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Usuário Quatro</td>
+                        <td>Setor Teste</td>
+                        <td>01/03/2024</td>
+                        <td>Descrição do chamado Quatro</td>
+                        <td>
+                            <select>
+                                <option selected>Aberto</option>
+                                <option >Fechado</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="radio" name="prioridade4" value="baixa" checked> Baixa
+                            <input type="radio" name="prioridade4" value="media"> Média
+                            <input type="radio" name="prioridade4" value="alta"> Alta
+                        </td>
+                        <td>06/04/2024</td>
+                        <td></td>
+                        </td>
+
+                        <td>
+                            <input type="checkbox" name="responsavel4" checked>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Usuário Teste Cinco</td>
+                        <td>Setor Cinco Teste</td>
+                        <td>01/04/2024</td>
+                        <td>Descrição do chamado Cinco - Não sei como resolver</td>
+                        <td>
+                            <select>
+                                <option selected>Aberto</option>
+                                <option >Fechado</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="radio" name="prioridade5" value="baixa"> Baixa
+                            <input type="radio" name="prioridade5" value="media" checked> Média
+                            <input type="radio" name="prioridade5" value="alta"> Alta
+                        </td>
+                        <td>20/04/2024</td>
+                        <td></td>
+                        </td>
+
+                        <td>
+                            <input type="checkbox" name="responsavel5">
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

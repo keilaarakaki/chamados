@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chamados Técnicos </title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+        .section {
+            margin-top: 5px;
+            padding-left: 20px;
+            margin-left: -20px;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <header><h1>Chamados Técnicos</h1></header>
+    <p>Bem vindo a JáAbriuChamado, é uma satisfação ter você conosco.</p>
+
+    <div class="container">
+        <section class="section">
+            <h2 style="color: #3498db">Áreas Restritas</h2>
+            <p style="padding-left: 20px">Tenha acesso exclusivo através do seu login</p>
+        </section>
+    </div>
+    <div class="button-group">
+        <a href="/login?tipo=tecnico" style="text-decoration: none">
+            <button style="border-radius: 12px; background-color: #9b59b6; color: white; padding: 40px 80px; font-size: 24px; border: none; cursor: pointer; transition: background-color 0.3s ease-out;">Acesso para Técnicos</button>
+        </a>
+
+        <div style="width: 60px; display: inline-block;"></div>
+
+        <a href="/login?tipo=usuario" style="text-decoration: none;">
+            <button style="border-radius: 12px; background-color: #4CAF50; color: white; padding: 40px 80px; font-size: 24px; border: none; cursor: pointer;">Acesso para Usuários</button>
+        </a>
+    </div>
+</body>
+</html>
