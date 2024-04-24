@@ -1,5 +1,6 @@
 package com.gr7.chamados;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,21 +36,27 @@ public class ChamadosController {
                                 @RequestParam("nome") String nome,
                                 @RequestParam("senha") String senha,
                                 Model model){
-        this.nome = nome;
-        model.addAttribute("nome", nome);
-        return "tecnico".equals(tipo) ? "tecnico" : "usuario";
+        if ("a".equalsIgnoreCase(senha)) {
+            this.nome = nome;
+            model.addAttribute("nome", nome);
+            return "tecnico".equals(tipo) ? "tecnico" : "usuario";
+        } else{
+            model.addAttribute("erro", "Senha inválida, tente novamente");
+            return "login";
+        }
     }
 
     @RequestMapping(value = "/novo-chamado", method = RequestMethod.GET)
-    public String novoChamado(Model model, @RequestParam String nome) {
-        this.nome = nome;
+    public String novoChamado(Model model, @RequestParam("nome") String nome) {
         model.addAttribute("nome", nome);
         return "novo-chamado";
     }
 
     @PostMapping("/novo-chamado")
-    public String processarFormulario(@RequestParam("tipo") String tipo, Model model) {
-        model.addAttribute("tipo", tipo);
+    public String processarFormulario(@RequestParam("nome") String nome,
+                                      Model model) {
+        this.nome = nome;
+        model.addAttribute("nome", nome);
         return "usuario";
     }
 }
