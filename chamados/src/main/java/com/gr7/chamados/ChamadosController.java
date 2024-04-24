@@ -47,6 +47,11 @@ public class ChamadosController {
         return "novo-chamado";
     }
 
+    @PostMapping("/novo-chamado")
+    public String processarFormulario(@RequestParam("tipo") String tipo, Model model) {
+        model.addAttribute("tipo", tipo);
+        return "usuario";
+    }
 }
 
 

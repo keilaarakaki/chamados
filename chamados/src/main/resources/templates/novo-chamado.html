@@ -46,8 +46,10 @@
             <input type="file" id="anexos" name="anexos" multiple>
         </div>
 
-        <button type="submit">Enviar Chamado</button>
-
+        <form action="/usuario" method="post">
+            <input type="hidden" name="tipo" value="${tipo}">
+            <button type="submit">Enviar Chamado</button>
+        </form>
     </form>
 </div>
 </body>
